@@ -1,0 +1,11 @@
+// this route will hit from the action and get created and send down to the state,
+// and then after the components have been created to the database, it will be sent to a specific order page on frontend => order/id
+
+import express from 'express'
+const router = express.Router()
+import { addOrderItems } from '../controllers/orderController.js'
+import { protect } from '../middleware/authMiddleware.js'
+
+router.route('/').post(protect, addOrderItems)
+
+export default router
