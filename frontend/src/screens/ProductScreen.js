@@ -6,6 +6,7 @@ import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProductDetails } from '../actions/productActions'
+import { PRODUCT_DETAILS_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1)
@@ -16,6 +17,7 @@ const ProductScreen = ({ history, match }) => {
   const { loading, error, product } = productDetails
 
   useEffect(() => {
+    dispatch({ type: PRODUCT_DETAILS_RESET })
     dispatch(listProductDetails(match.params.id))
   }, [dispatch, match])
 
